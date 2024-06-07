@@ -1,20 +1,50 @@
 .map {
     border-radius: 6px 6px 0px 0px;
-    height: 35em;
+    height: 34em;
     width: 36em;
 }
-.map_holder{
-    padding-right: 15px;
-    padding-bottom: 60px;
-    position: fixed;
-    right: 0;
-    bottom: 0;
+
+@media only screen and (min-width: 600px) {
+    .map_holder{
+        padding-right: 15px;
+        padding-bottom: 60px;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        max-height: 60% !important;
+    }
+}
+/*  de rest */
+
+@media only screen and (min-width: 1px) {
+    .map_holder{
+        padding-right: 0px;
+        padding-bottom: 300px;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        max-height: 25% !important;
+    }
+}
+/*  desktop */
+@media only screen and (min-width: 768px) {
+    .map_holder{
+        padding-right: 15px;
+        padding-bottom: 60px;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        max-height: 60% !important;
+    }
 }
 
 .foto {
     position: fixed;
     top: 0;
     left: 0;
-    height: 40em;
-    width: 55em
+    max-width: 100%;
+    height: auto;
+}
+html {
+    font-family: "Lucida Sans", sans-serif;
 }
