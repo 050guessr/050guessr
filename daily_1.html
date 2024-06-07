@@ -6,31 +6,63 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="guess.css">
+  <style>
+    .zoom-container {
+      overflow: hidden;
+      height: 40em;
+      width: 55em;
+      margin: 0 auto;
+    }
+
+    .zoom-image {
+      height: 40em;
+      width: 55em;      
+      transition: transform 0.5s ease;
+    }
+
+    .zoom-container:hover .zoom-image {
+      transform: scale(3);
+    }
+  </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="RNG.js"></script>
   <script src="kaart.js"></script>
   <script>
-    edit_ui()
     document.addEventListener('DOMContentLoaded', function (event) {
       RNG("2");
       setFixedMarker(JSON.parse(sessionStorage.getItem("haha_ik_haat_js")).cords);
       maak_kaart();
-    })
+    });
   </script>
 </head>
 
 <body>
-  <img src="fotos/1/1.png" alt="foto" id="img" class="foto">
 
+  <div class="zoom-container" id="zoom-container">
+    <img src="fotos/1/1.png" alt="foto" id="img" class="foto zoom-image">
+  </div>
 
-  <div class="map_holder">
-    <div class="guess_knop">
+  <div class="map_holder" id="map_holder">
+    <div class="guess_knop" id="guess_knop">
       <a onclick="Klaar()" class="btn customButton large">guess</a>
     </div>
     <div class="map" id="map"></div>
-
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const zoomContainer = document.getElementById('zoom-container');
+      const zoomImage = zoomContainer.querySelector('.zoom-image');
+
+      zoomContainer.addEventListener('mousemove', (event) => {
+        const rect = zoomContainer.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / zoomContainer.offsetWidth;
+        const y = (event.clientY - rect.top) / zoomContainer.offsetHeight;
+        zoomImage.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+      });
+    });
+  </script>
 
 </body>
 

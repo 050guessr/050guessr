@@ -25,7 +25,7 @@ function icon() {
 
   let iconOptions = {
     title: "company name",
-    draggable: true,
+    draggable: false,
     icon: myIcon,
     opacity: 0
   }
@@ -42,15 +42,26 @@ function addMarker() {
   placedMarker = L.marker(latlng, icon()).addTo(map);
   placedMarker.setOpacity(1);
 }
-function edit_ui(){
-  document.getElementsByClassName("map_holder").className = "map_holder_after";
+function edit_ui() {
+  document.getElementById("map").classList.add('map_after_edit');
+  document.getElementById("map_holder").classList.add('map_holder_after_edit');
+  document.getElementById("guess_knop").remove();
+  document.getElementById("img").remove();
+  updateMapSize();
+  //document.getElementById("map").classList.remove('map');
+}
+function updateMapSize() {
+  map.invalidateSize();
+  // Optionally refit the bounds if necessary:
+  // fitMapToMarkers([fixedMarkerLatLng, placedMarkerLatLng]);
 }
 function Klaar() {
   lock = true
   console.log(Bereken());
-  MaakLijn()
-  fitMapToMarkers([fixedMarkerLatLng, latlng])
+  MaakLijn();
+  fitMapToMarkers([fixedMarkerLatLng, latlng]);
   fixedMarker.setOpacity(1);
+  edit_ui();
 
 }
 function MaakLijn() {

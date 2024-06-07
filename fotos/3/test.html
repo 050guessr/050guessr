@@ -1,0 +1,45 @@
+<!-- Eh-oh! Tinky Winky knows how to make zoomable images in HTML. Let's go on a magical journey through code! -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoomable Image</title>
+    <style>
+        .zoom-container {
+            overflow: hidden;
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .zoom-image {
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .zoom-container:hover .zoom-image {
+            transform: scale(4);
+        }
+    </style>
+</head>
+<body>
+    <div class="zoom-container">
+        <img src="3.jpeg" alt="Zoomable Image" class="zoom-image">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const zoomContainer = document.querySelector('.zoom-container');
+            const zoomImage = zoomContainer.querySelector('.zoom-image');
+    
+            zoomContainer.addEventListener('mousemove', (event) => {
+                const rect = zoomContainer.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / zoomContainer.offsetWidth;
+                const y = (event.clientY - rect.top) / zoomContainer.offsetHeight;
+                zoomImage.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+            });
+        });
+    </script>
+    
+</body>
+</html>

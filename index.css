@@ -3,6 +3,17 @@
     height: 35em;
     width: 36em;
 }
+.map_after_edit {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    -ms-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+    
+}
 .map_holder{
     padding-right: 15px;
     padding-bottom: 60px;
@@ -11,13 +22,22 @@
     bottom: 0;
 }
 .map_holder_after_edit{
-    
+    height: 100% !important;
+    width: 100% !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    margin: 0 !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    -ms-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
 }
+
 
 .foto {
     position: fixed;
     top: 0;
     left: 0;
-    height: 40em;
-    width: 55em
+
 }
