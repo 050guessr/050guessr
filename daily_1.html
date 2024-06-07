@@ -12,8 +12,8 @@
   <script src="kaart.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function (event) {
-      RNG("5");
-      var temp = JSON.parse(sessionStorage.getItem("fotoinfo"));
+      var temp = RNG("5")
+      console.log(temp)
       setFixedMarker(temp);
       maak_kaart();
     })

@@ -54,9 +54,9 @@ function RNG(daily) {
         var foto = document.getElementById("img");
 
         return request("fotos/" + RNG + "/" + RNG + ".json").then(text => {
-            var fotoInfo = text;
-            sessionStorage.setItem("fotoinfo",fotoInfo);
+            var fotoInfo = JSON.parse(text);
             foto.src = "fotos/" + RNG + "/" + RNG + ".jpeg";
+            return fotoInfo;
         });
     })
     .catch(error => {
