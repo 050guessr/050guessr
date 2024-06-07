@@ -6,6 +6,13 @@ var lock;
 var latlng;
 var line;
 
+function fitMapToMarkers(latlngs) {
+  var bounds = L.latLngBounds(latlngs);
+  map.flyToBounds(bounds, {
+    duration: 1, // Duration of the animation in seconds
+    easeLinearity: 0.25 // EaseLinearity for smoother transition
+  });
+}
 function setFixedMarker(latlng) {
   fixedMarkerLatLng = latlng;
 }
@@ -35,10 +42,14 @@ function addMarker() {
   placedMarker = L.marker(latlng, icon()).addTo(map);
   placedMarker.setOpacity(1);
 }
+function edit_ui(){
+  document.getElementsByClassName("map_holder").className = "map_holder_after";
+}
 function Klaar() {
   lock = true
   console.log(Bereken());
   MaakLijn()
+  fitMapToMarkers([fixedMarkerLatLng, latlng])
   fixedMarker.setOpacity(1);
 
 }
