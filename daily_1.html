@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Leaflet Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="guess.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="RNG.js"></script>
+  <script src="kaart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+      var temp = RNG("5")
+      console.log(temp)
+      setFixedMarker(temp);
+      maak_kaart();
+    })
+  </script>
+</head>
+
+<body>
+  <img src="fotos/1/1.png" alt="foto" id="img" class="foto">
+
+
+  <div class="map_holder">
+    <div class="guess_knop">
+      <a onclick="Klaar()" class="btn customButton large">guess</a>
+    </div>
+    <div class="map" id="map"></div>
+
+  </div>
+
+</body>
+
+</html>

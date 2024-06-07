@@ -1,0 +1,33 @@
+.customButton {
+    border: 0px solid #000000;
+    border-radius: 6px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #F70908;
+    color: #FFFFFF;
+    font-weight: normal;
+    opacity: 1;
+    transition: 0.5s;
+    width: 14.40em !important;
+    display: inline-block !important;
+    max-width: 100% !important;
+    text-align: center;
+}
+
+
+
+.guess_knop {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 30px;
+    padding: 15px;
+}
+
+.customButton:hover {
+    cursor: pointer;
+    background-color: #DC100E;
+    opacity: 1;
+    transition: 0.5s;
+    color: #D5D5D5;
+}
