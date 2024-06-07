@@ -14,25 +14,15 @@
     text-align: center;
 }
 
-@media only screen and (min-width: 768px) {
-    .guess_knop {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        font-size: 30px;
-        padding: 15px;
-    }
-}
-@media only screen and (min-width: 1px) {
-    .guess_knop {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        font-size: 30px;
-        padding: 0px;
-    }
-}
 
+
+.guess_knop {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 30px;
+    padding: 15px;
+}
 
 .customButton:hover {
     cursor: pointer;
