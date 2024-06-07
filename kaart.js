@@ -6,8 +6,8 @@ var lock;
 var latlng;
 var line;
 
-function setFixedMarker(latlng){
-  fixedMarkerLatLng=latlng;
+function setFixedMarker(latlng) {
+  fixedMarkerLatLng = latlng;
 }
 function icon() {
   let customIcon = {
@@ -65,7 +65,6 @@ function maak_kaart() {
     attribution: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
   }).addTo(map);
 
-  fixedMarkerLatLng = [53.22174747304968, 6.553838253021241]; // Fixed marker coordinates in Groningen
   fixedMarker = L.marker(fixedMarkerLatLng, icon()).addTo(map);
   lock = false;
 

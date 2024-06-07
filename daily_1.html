@@ -12,9 +12,8 @@
   <script src="kaart.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function (event) {
-      var temp = RNG("5")
-      console.log(temp)
-      setFixedMarker(temp);
+      RNG("2");
+      setFixedMarker(JSON.parse(sessionStorage.getItem("haha_ik_haat_js")).cords);
       maak_kaart();
     })
   </script>
