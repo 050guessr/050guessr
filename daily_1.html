@@ -2,17 +2,26 @@
 <html>
 
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
   <title>050guessr</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="guess.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="guess_knop.css">
   <link rel="stylesheet" href="img_zoom.css">
+  <link rel="stylesheet" href="klaar_screrm.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="RNG.js"></script>
   <script src="kaart.js"></script>
+  <script src="img_zoom.js"></script>
   <script>
+
     document.addEventListener('DOMContentLoaded', function (event) {
+      document.getElementById("info_balk").style.visibility = 'hidden';
       RNG("2");
       setFixedMarker(JSON.parse(sessionStorage.getItem("haha_ik_haat_js")).cords);
       maak_kaart();
@@ -27,9 +36,21 @@
   </div>
   <div class="map_holder" id="map_holder">
     <div class="guess_knop" id="guess_knop">
-      <a onclick="Klaar()" class="btn customButton large">guess</a>
+      <a onclick="Klaar('1')" class="btn customButton large">guess</a>
     </div>
     <div class="map" id="map"></div>
   </div>
+  <div class="info_balk" id="info_balk">
+    <div>
+      <p class="info_op_balk" id="meters">test</p>
+    </div>
+    <div>
+      <p class="info_op_balk" id="score">test</p>
+    </div>
+    <div class="knop">
+      <a class="btn customButton large volgende_knop" href="daily_1.html">volgende</a>
+    </div>
+  </div>
 </body>
+
 </html>
