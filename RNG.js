@@ -55,6 +55,7 @@ function RNG(daily) {
 
         return request("fotos/" + RNG + "/" + RNG + ".json").then(text => {
             sessionStorage.setItem("haha_ik_haat_js", text)
+            //console.log("gelukt")
             foto.src = "fotos/" + RNG + "/" + RNG + ".jpeg";
         });
     })

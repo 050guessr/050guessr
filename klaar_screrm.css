@@ -1,0 +1,52 @@
+.map_holder_after_edit {
+    height: 100% !important;
+    width: 100% !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    margin: 0 !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    -ms-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.map_after_edit {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    top: 50% !important;
+    left: 50% !important;
+    -ms-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+    position: relative !important;
+    z-index: 1;
+
+}
+
+.info_balk {
+    font-size: 30px;
+    padding: 15px;
+    max-width: 96%;
+    width: 95%;
+    
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.695);
+    color: white;
+    position: fixed;
+    bottom: 0; 
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 15px;
+}
+
+.info_balk>div {
+    width: 33.33%;
+}
+.knop{
+    padding-top: 25px;
+    font-size: 1em;
+}
+.info_op_balk{
+    font-size: 0.90em;
+}

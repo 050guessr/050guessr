@@ -24,7 +24,7 @@ function icon() {
   let myIcon = L.icon(customIcon);
 
   let iconOptions = {
-    title: "company name",
+    title: " ",
     draggable: false,
     icon: myIcon,
     opacity: 0
@@ -55,13 +55,26 @@ function updateMapSize() {
   // Optionally refit the bounds if necessary:
   // fitMapToMarkers([fixedMarkerLatLng, placedMarkerLatLng]);
 }
-function Klaar() {
-  lock = true
-  console.log(Bereken());
+function Klaar(daily) {
   MaakLijn();
+  lock = true;
+  document.getElementById("info_balk").style.visibility = 'visible';
   fitMapToMarkers([fixedMarkerLatLng, latlng]);
   fixedMarker.setOpacity(1);
   edit_ui();
+  meters = Math.round(Bereken());
+  document.getElementById("meters").innerText = "je bent " + meters + " meters van het doel af!";
+  var score = 2000 - meters
+  if (score < 1) {
+    score = 0
+  }
+  document.getElementById("score").innerText = "je score is " + score
+  if (daily === "1") {
+    sessionStorage.setItem("daily", score)
+  } else {
+    score = score + sessionStorage.getItem("daily")
+    sessionStorage.setItem("daily", score)
+  }
 
 }
 function MaakLijn() {
