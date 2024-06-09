@@ -50,3 +50,9 @@
 .info_op_balk{
     font-size: 0.90em;
 }
+.meters{
+    width: 40% !important;
+}
+.score{
+    width: 20% !important;
+}

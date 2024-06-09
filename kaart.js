@@ -14,7 +14,8 @@ function fitMapToMarkers(latlngs) {
   });
 }
 function setFixedMarker(latlng) {
-  fixedMarkerLatLng = latlng;
+  console.log(latlng)
+  fixedMarkerLatLng = [latlng.cords[0], latlng.cords[1]];;
 }
 function icon() {
   let customIcon = {
