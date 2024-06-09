@@ -28,7 +28,7 @@ function RNG(daily) {
     }
     var info = JSON.parse(httpGet("info.json"));
     var storedValue = sessionStorage.getItem("DAILY_" + daily);
-    var RNG = Math.floor(storedValue * info.foto_hoeveelheid) + 1;
+    var RNG = Math.floor(storedValue * info.foto_hoeveelheid)+1;
     var foto = document.getElementById("img");
     foto.src = "fotos/" + RNG + "/" + RNG + ".jpeg";
     return httpGet("fotos/" + RNG + "/" + RNG + ".json");
