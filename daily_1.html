@@ -16,14 +16,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="RNG.js"></script>
-  <script src="kaart.js"></script>
+  <script src="kaart.js"></script>   
   <script src="img_zoom.js"></script>
   <script>
 
     document.addEventListener('DOMContentLoaded', function (event) {
       document.getElementById("info_balk").style.visibility = 'hidden';
-      RNG("2");
-      setFixedMarker(JSON.parse(sessionStorage.getItem("haha_ik_haat_js")).cords);
+      // todo ceck dat haha_ik_haat_js een waarde heeft
+      cords = JSON.parse(RNG("1"));
+      console.log(cords.cords[1]);
+      setFixedMarker(cords);
       maak_kaart();
     });
   </script>
@@ -41,10 +43,10 @@
     <div class="map" id="map"></div>
   </div>
   <div class="info_balk" id="info_balk">
-    <div>
+    <div class="meters">
       <p class="info_op_balk" id="meters">test</p>
     </div>
-    <div>
+    <div class="score">
       <p class="info_op_balk" id="score">test</p>
     </div>
     <div class="knop">
