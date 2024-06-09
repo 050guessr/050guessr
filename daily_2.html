@@ -23,7 +23,7 @@
     document.addEventListener('DOMContentLoaded', function (event) {
       document.getElementById("info_balk").style.visibility = 'hidden';
       // todo ceck dat haha_ik_haat_js een waarde heeft
-      cords = JSON.parse(RNG("1"));
+      cords = JSON.parse(RNG("2"));
       console.log(cords.cords[1]);
       setFixedMarker(cords);
       maak_kaart();
@@ -38,7 +38,7 @@
   </div>
   <div class="map_holder" id="map_holder">
     <div class="guess_knop" id="guess_knop">
-      <a onclick="Klaar('1')" class="btn customButton large">guess</a>
+      <a onclick="Klaar('2')" class="btn customButton large">guess</a>
     </div>
     <div class="map" id="map"></div>
   </div>
@@ -50,7 +50,7 @@
       <p class="info_op_balk" id="score">test</p>
     </div>
     <div class="knop">
-      <a class="btn customButton large volgende_knop" href="daily_2.html">volgende</a>
+      <a class="btn customButton large volgende_knop" href="daily_3.html">volgende</a>
     </div>
   </div>
 </body>
