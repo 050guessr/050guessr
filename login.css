@@ -1,0 +1,30 @@
+.container{
+    background-color: rgb(255, 255, 255);
+    width: 25rem;
+    height: 25rem;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 10rem;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo{
+    width: 90%;
+}
+body{
+    background-color: rgb(236, 236, 236);
+}
+.button{
+    font-size: 1.5rem;
+    border-radius: 250px;
+    width: 30%;
+    background-color: white;
+}
+.button:hover{
+    font-size: 1.75rem;
+    width: 40%;
+    margin-top: -5px;
+}

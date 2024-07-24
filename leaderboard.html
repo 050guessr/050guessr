@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="leaderboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="plek_een" id="plek_een"></div>
+        <div class="plek_twee" id="plek_twee"></div>
+        <div class="plek_drie" id="plek_drie"></div>
+        <div class="de_rest" id="de_rest"></div>
+    </div>
+    <script>
+        // Teletubby code mode activated!
+        // Laa-Laa fetches leaderboard data and shows it on the webpage using async/await
+        async function makeRequest() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/leaderboard');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.text();
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
+
+        async function displayLeaderboard() {
+            const data = await makeRequest();
+            if (data) {
+                var leaderboardDiv = document.getElementById('plek_een');
+                var leaderboard = JSON.parse(data)
+                leaderboardDiv.innerHTML = leaderboard[0].username + " " + leaderboard[0].user_score + " punten";
+                var leaderboardDiv = document.getElementById('plek_twee');
+                leaderboardDiv.innerHTML = leaderboard[1].username + " " + leaderboard[1].user_score + " punten";
+                var leaderboardDiv = document.getElementById('plek_drie');
+                leaderboardDiv.innerHTML = leaderboard[2].username + " " + leaderboard[2].user_score + " punten";
+                var leaderboardDiv = document.getElementById('de_rest');
+                leaderboardDiv.innerHTML = leaderboard[3].username + " " + leaderboard[3].user_score + " punten";
+                console.log("loop")
+                for (let i = 4; i < leaderboard.length; i++) {
+                    var leaderboardDiv = document.getElementById('de_rest');
+                    leaderboardDiv.innerHTML = leaderboardDiv.innerHTML + "<br>" + leaderboard[i].username + " " + leaderboard[i].user_score + " punten";
+                    console.log("loop")
+                }
+            } else {
+                document.getElementById('container').innerHTML = ' server offline )=';
+            }
+        }
+
+        // Call the function to display the leaderboard
+        displayLeaderboard();
+    </script>
+</body>
+
+</html>

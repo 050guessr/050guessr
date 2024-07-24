@@ -56,6 +56,19 @@ function updateMapSize() {
   // Optionally refit the bounds if necessary:
   // fitMapToMarkers([fixedMarkerLatLng, placedMarkerLatLng]);
 }
+async function makeRequest(url) {
+  try {
+      const response = await fetch(url);
+      if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+      }
+      const data = await response.text();
+      return data;
+  } catch (error) {
+      console.error('Error:', error);
+      return null;
+  }
+}
 function Klaar(daily) {
   MaakLijn();
   lock = true;
@@ -78,10 +91,12 @@ function Klaar(daily) {
   document.getElementById("score").innerText = "je score is " + sessionStorage.getItem("score")
 
   document.getElementById("meters").innerText = "je bent " + meters + " meters van het doel af!";
-
-
+  
+  if(daily == "4"){makeRequest("http://127.0.0.1:5000/set_score/"+localStorage.getItem("key")+"/"+score)}
+    
 
 }
+
 function MaakLijn() {
   var latlngs = [fixedMarkerLatLng, latlng];
   line = L.polyline(latlngs, {

@@ -1,0 +1,35 @@
+.plek_een {
+    width: 100%;
+    height: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 0);
+}
+.plek_twee {
+    width: 100%;
+    height: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(179, 179, 171);
+}
+.plek_drie {
+    width: 100%;
+    height: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(204, 115, 56);
+}
+.de_rest{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+.container{
+    text-align: center;
+}

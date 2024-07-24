@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>050 login test</title>
+    <link rel="stylesheet" href="login.css">
+    <script>
+        async function makeRequest(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.text();
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
+        async function login() {
+            var naam = document.getElementById("name").value
+            var ww = document.getElementById("password").value
+            const data = await makeRequest("http://127.0.0.1:5000/login/" + naam + "/" + ww)
+            console.log(data)
+            localStorage.setItem("key", data)
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <img src="logo.png" alt="050 guessr" class="logo">
+        <form onsubmit="login()">
+            <label for="name">Naam</label><br>
+            <input type="text" id="name" name="name" value=""><br>
+            <label for="password">Wachtwoord</label><br>
+            <input type="password" id="password" name="password" value=""><br><br>
+            <input type="submit" value="Submit" class="button">
+        </form>
+    </div>
+</body>
+
+</html>
