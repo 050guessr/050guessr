@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>050 login test</title>
+    <link rel="stylesheet" href="login.css">
     <script>
         async function makeRequest(url) {
             try {
@@ -21,7 +22,8 @@
         async function login() {
             var naam = document.getElementById("name").value
             var ww = document.getElementById("password").value
-            const data = await makeRequest("http://127.0.0.1:5000/maak_acount/"+naam+"/"+ww)
+            var data = await makeRequest("http://127.0.0.1:5000/maak_acount/" + naam + "/" + ww)
+            data = await makeRequest("http://127.0.0.1:5000/login/" + naam + "/" + ww)
             console.log(data)
             localStorage.setItem("key", data)
         }
@@ -29,13 +31,13 @@
 </head>
 
 <body>
-    <form onsubmit="login()">
-        <label for="fname">First name:</label><br>
-        <input type="text" id="name" name="name" value=""><br>
-        <label for="lname">Last name:</label><br>
-        <input type="password" id="password" name="password" value=""><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <img src="logo.png" alt="050 guessr" class="logo">
+        <form onsubmit="login()">
+            <input required autofocus="True" class="text_box" type="text" id="name" name="name" value="" placeholder="naam"><br>
+            <input required placeholder="wachtwoord" class="text_box" type="password" id="password" name="password" value="" ><br>
+            <input type="submit" value="maak acount" class="button" style="width: 50%;"></form>
+    </div>
 </body>
 
-</html>
+</html> 

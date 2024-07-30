@@ -18,13 +18,41 @@ body{
     background-color: rgb(236, 236, 236);
 }
 .button{
+    margin-top: 1rem;
     font-size: 1.5rem;
-    border-radius: 250px;
+    height: 2.5rem;
+    border-radius: 25px;
     width: 30%;
-    background-color: white;
+    transition: 0.5s;
+    background-color: rgb(255, 255, 255);
+    color: rgb(68, 127, 76);
+    border: 2px solid rgb(68, 127, 76);
+    
 }
 .button:hover{
-    font-size: 1.75rem;
-    width: 40%;
-    margin-top: -5px;
+
+    transition: 0.5s;
+    color: rgb(255, 255, 255);
+    background-color: rgb(68, 127, 76);
+}
+.text_box{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 25px;
+    text-align: center; 
+    height: 2.5rem;
+    border: 2px solid rgb(68, 127, 76);
+
+}
+.text_box:hover{
+    transition: 0.5s;
+    border: 3px solid rgb(68, 127, 76);
+}
+.text_box::placeholder{
+    transition: 0.5s;
+    color: rgba(0, 0, 0, 0.356);
+}
+.text_box:focus{
+    outline: 1px solid rgb(68, 127, 76);
+    border: 3px solid rgb(68, 127, 76);   
 }

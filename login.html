@@ -32,14 +32,12 @@
 <body>
     <div class="container">
         <img src="logo.png" alt="050 guessr" class="logo">
-        <form onsubmit="login()">
-            <label for="name">Naam</label><br>
-            <input type="text" id="name" name="name" value=""><br>
-            <label for="password">Wachtwoord</label><br>
-            <input type="password" id="password" name="password" value=""><br><br>
-            <input type="submit" value="Submit" class="button">
+        <form >
+            <input required autofocus="True" class="text_box" type="text" id="name" name="name" value="" placeholder="naam"><br>
+            <input required placeholder="wachtwoord" class="text_box" type="password" id="password" name="password" value="" ><br>
+            <input onclick="login()" type="submit" value="login" class="button"> 
         </form>
-    </div>
+    </div> 
 </body>
 
 </html>

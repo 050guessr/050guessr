@@ -3,7 +3,7 @@
     border-radius: 6px;
     padding-bottom: 10px;
     padding-top: 10px;
-    background-color: #F70908;
+    background-color: rgb(68, 127, 76);
     color: #FFFFFF;
     font-weight: normal;
     opacity: 1;
@@ -26,8 +26,7 @@
 
 .customButton:hover {
     cursor: pointer;
-    background-color: #DC100E;
+    background-color: rgba(68, 127, 76, 0.85);
     opacity: 1;
     transition: 0.5s;
-    color: #D5D5D5;
 }
