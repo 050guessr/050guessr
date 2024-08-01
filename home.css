@@ -9,8 +9,7 @@ a {
 }
 
 a:hover {
-    color: black;
-}
+    color: rgb(85, 154, 94);}
 
 .links {
     margin-top: -0rem;
@@ -38,7 +37,7 @@ a:hover {
     height: 2rem;
     border-radius: 25px;
     margin-top: 0;
-    width: 220px;
+    width: auto;
     background-color: rgb(236, 236, 236);
     text-align: left;
     transition: 0.5s;
