@@ -26,7 +26,7 @@
 
 .customButton:hover {
     cursor: pointer;
-    background-color: rgba(68, 127, 76, 0.85);
+    background-color: rgb(68, 127, 76);
     opacity: 1;
     transition: 0.5s;
 }
