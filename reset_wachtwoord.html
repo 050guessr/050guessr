@@ -21,30 +21,22 @@
         }
         async function login() {
             var naam = document.getElementById("name").value;
-            var ww = document.getElementById("password").value;
-            const data = await makeRequest("http://127.0.0.1:5000/login/" + naam + "/" + ww);
-            console.log(data);
+            const data = await makeRequest("http://127.0.0.1:5000/restore_acount/" + naam);
+            if (data == naam){window.location.replace("http://127.0.0.1:5500/login.html");}
+            document.getElementById("rood").innerText = "geen account gevonden";
 
-            if (data != "gebruiker bestaat niet" && data != "verkeerd wachtwoord" && true) {
-                localStorage.setItem("key", data);
-
-                window.location.replace("http://127.0.0.1:5500/home.html");
-            }
             
-            document.getElementById("rood").innerText = data;
         }
     </script>
 </head>
 
 <body>
-    <div class="container" style="height: 27rem;">
+    <div class="container" style="height: 22rem;">
         <img src="logo.png" alt="050 guessr" class="logo">
         <input required autofocus="True" class="text_box" type="text" id="name" name="name" value=""
-            placeholder="naam"><br>
-        <input required placeholder="wachtwoord" class="text_box" type="password" id="password" name="password"
-            value=""><br>
-        <input onclick="login()" type="submit" value="login" class="button"><br>
-        <a href="reset_wachtwoord.html" class="rood" style="color: rgb(171, 171, 171);">reset wachtwoord</a>
+            placeholder="email"><br>
+        <input onclick="login()" type="submit" value="reset wachtwoord" class="button" style="width: 15rem;">
+        <a href=""></a>
         <p class="rood" id="rood"></p>
     </div>
 </body>

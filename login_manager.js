@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function (event) {
 });
 
 function in_gelogd() {
-    if (localStorage.getItem("key") != "null") {
+    if (localStorage.getItem("key") !== null) {
         return true
     }
     return false

@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>050 login test</title>
+    <link rel="stylesheet" href="login.css">
+    <script>
+        function in_gelogd() {
+    if (localStorage.getItem("key") !== null) {
+        return true
+    }
+    return false
+}
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log(sessionStorage.getItem("key"));
+
+            if (in_gelogd()) {
+                document.getElementById("knopA").value = "instellingen";
+                document.getElementById("knopB").value = "uitloggen";
+
+            }
+            else{
+                document.getElementById("knopA").value = "inloggen";
+                document.getElementById("knopB").value = "acount maken";
+            }
+        });
+        async function knopA() {
+            if (in_gelogd()) {
+                window.location.replace("http://127.0.0.1:5500/instellingen.html");
+            }
+            else {
+                window.location.replace("http://127.0.0.1:5500/login.html");
+            }
+        }
+        async function knopB() {
+            if (in_gelogd()) {
+                localStorage.clear();
+                window.location.replace("http://127.0.0.1:5500/index.html");
+            }
+            else {
+                window.location.replace("http://127.0.0.1:5500/maak_acount.html");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container" style="height: 22rem;">
+        <img src="logo.png" alt="050 guessr" class="logo">
+        <input style="width: 70%;" onclick="knopA()" type="submit" id="knopA" value="login" class="button"><br>
+        <input style="width: 70%;" onclick="knopB()" type="submit" id="knopB" value="login" class="button">
+
+    </div>
+</body>
+
+</html>

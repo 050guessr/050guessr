@@ -22,22 +22,33 @@
         async function login() {
             var naam = document.getElementById("name").value
             var ww = document.getElementById("password").value
-            var data = await makeRequest("http://127.0.0.1:5000/maak_acount/" + naam + "/" + ww)
-            data = await makeRequest("http://127.0.0.1:5000/login/" + naam + "/" + ww)
-            console.log(data)
-            localStorage.setItem("key", data)
+            var email = document.getElementById("email").value
+            var data = await makeRequest("http://127.0.0.1:5000/maak_acount_V2/" + naam + "/" + ww + "/" + email)
+
+            if (data == "account aangemaakt") {
+                key = await makeRequest("http://127.0.0.1:5000/login/" + naam + "/" + ww)
+                console.log(data)
+                await localStorage.setItem("key", key)
+                window.location.replace("http://127.0.0.1:5500/index.html");
+            }
+            document.getElementById("rood").innerText = data
+
         }
     </script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="height: 28rem;">
         <img src="logo.png" alt="050 guessr" class="logo">
-        <form onsubmit="login()">
-            <input required autofocus="True" class="text_box" type="text" id="name" name="name" value="" placeholder="naam"><br>
-            <input required placeholder="wachtwoord" class="text_box" type="password" id="password" name="password" value="" ><br>
-            <input type="submit" value="maak acount" class="button" style="width: 50%;"></form>
+        <input  class="text_box" type="text" id="name" name="name" value=""
+            placeholder="naam"><br>
+        <input  class="text_box" type="pasta" id="email" name="email" value="" placeholder="email"><br>
+
+        <input required placeholder="wachtwoord" class="text_box" type="password" id="password" name="password"
+            value=""><br>
+        <input onclick="login()" type="submit" value="maak acount" class="button"><br>
+        <p class="rood" id="rood"></p>
     </div>
 </body>
 
-</html> 
+</html>

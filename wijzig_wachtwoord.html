@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>050 login test</title>
+    <link rel="stylesheet" href="login.css">
+    <script>
+        async function makeRequest(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.text();
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
+        async function login() {
+            var wwo = document.getElementById("name").value;
+            var wwn = document.getElementById("password").value;
+            const data = await makeRequest("http://127.0.0.1:5000/set_password/" + wwo + "/" + wwn+"/"+localStorage.getItem("key"));
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container" style="height: 27rem;">
+        <img src="logo.png" alt="050 guessr" class="logo">
+        <input required autofocus="True" class="text_box" type="password" id="name" name="wwo" value=""
+            placeholder="oud wachtwoord"><br>
+        <input required placeholder="nieuw wachtwoord" class="text_box" type="password" id="password" name="wwn"
+            value=""><br>
+        <input onclick="login()" type="submit" value="wijzig wachtwoord" class="button"><br>
+        <a href="reset_wachtwoord.html" class="rood" style="color: rgb(171, 171, 171);">wachtwoord vergeten?</a>
+        <p class="rood" id="rood"></p>
+    </div>
+</body>
+
+</html>
