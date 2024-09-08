@@ -13,12 +13,11 @@ function httpGet(theUrl)
 
 function RNG(daily) {
     if (sessionStorage.getItem("DAILY_5") === null) {
-        var myrng = new Math.random();
-        sessionStorage.setItem("DAILY_1", myrng());
-        sessionStorage.setItem("DAILY_2", myrng());
-        sessionStorage.setItem("DAILY_3", myrng());
-        sessionStorage.setItem("DAILY_4", myrng());
-        sessionStorage.setItem("DAILY_5", myrng());
+        sessionStorage.setItem("DAILY_1", Math.random());
+        sessionStorage.setItem("DAILY_2", Math.random());
+        sessionStorage.setItem("DAILY_3", Math.random());
+        sessionStorage.setItem("DAILY_4", Math.random());
+        sessionStorage.setItem("DAILY_5", Math.random());
     }
     var info = JSON.parse(httpGet("info.json"));
     var storedValue = sessionStorage.getItem("DAILY_" + daily);
