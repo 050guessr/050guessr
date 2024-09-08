@@ -92,7 +92,7 @@ function Klaar(daily) {
 
   document.getElementById("meters").innerText = "je bent " + meters + " meters van het doel af!";
   
-  if(daily == "4"){makeRequest("http://127.0.0.1:5000/set_score/"+localStorage.getItem("key")+"/"+score)}
+  if(daily == "5" && localStorage.getItem("key") !== null){makeRequest("http://127.0.0.1:5000/set_score/"+localStorage.getItem("key")+"/"+score)}
     
 
 }
