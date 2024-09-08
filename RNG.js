@@ -13,13 +13,7 @@ function httpGet(theUrl)
 
 function RNG(daily) {
     if (sessionStorage.getItem("DAILY_5") === null) {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-        var yyyy = today.getFullYear();
-        today = mm + '/' + dd + '/' + yyyy + '/superrand/siemvk/2024/';
-        var seed = encodeToBase64(today);
-        var myrng = new Math.seedrandom(seed);
+        var myrng = new Math.random();
         sessionStorage.setItem("DAILY_1", myrng());
         sessionStorage.setItem("DAILY_2", myrng());
         sessionStorage.setItem("DAILY_3", myrng());
