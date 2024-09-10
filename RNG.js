@@ -19,7 +19,6 @@ function RNG(daily) {
         sessionStorage.setItem("DAILY_3", Math.random());
         sessionStorage.setItem("DAILY_4", Math.random());
         sessionStorage.setItem("DAILY_5", Math.random());
-        if (sessionStorage.getItem("DAILY_5") === sessionStorage.getItem("DAILY_4")) {
     }
     var info = JSON.parse(httpGet("info.json"));
     var storedValue = sessionStorage.getItem("DAILY_" + daily);
