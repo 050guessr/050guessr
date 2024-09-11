@@ -3,26 +3,31 @@ function encodeToBase64(str) {
     return btoa(str);
 }
 
-function httpGet(theUrl)
-{
+function httpGet(theUrl) {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
+    xmlHttp.open("GET", theUrl, false); // false for synchronous request
+    xmlHttp.send(null);
     return xmlHttp.responseText;
 }
 
 function RNG(daily) {
 
-    if (sessionStorage.getItem("DAILY_5") === null) {
-        sessionStorage.setItem("DAILY_1", Math.random());
-        sessionStorage.setItem("DAILY_2", Math.random());
-        sessionStorage.setItem("DAILY_3", Math.random());
-        sessionStorage.setItem("DAILY_4", Math.random());
-        sessionStorage.setItem("DAILY_5", Math.random());
+    if (daily == "1") {
+        var info = JSON.parse(httpGet("info.json"));
+        var temp = "";
+        const daily_seeds = [];
+        for (let loop = 0; loop < 5; console.log(loop)) {
+            temp = Math.floor(Math.random() * info.foto_hoeveelheid);
+            if (!daily_seeds.includes(temp)) {
+                daily_seeds[loop] = temp;
+                sessionStorage.setItem("DAILY_" + loop, temp);
+                loop++;
+            }
+
+        }
+
     }
-    var info = JSON.parse(httpGet("info.json"));
-    var storedValue = sessionStorage.getItem("DAILY_" + daily);
-    var RNG = Math.floor(storedValue * info.foto_hoeveelheid)+1;
+    var RNG = sessionStorage.getItem("DAILY_" + daily);
     var foto = document.getElementById("img");
     foto.src = "fotos/" + RNG + "/" + RNG + ".jpeg";
     return httpGet("fotos/" + RNG + "/" + RNG + ".json");
