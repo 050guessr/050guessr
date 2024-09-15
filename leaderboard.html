@@ -11,7 +11,7 @@
         // Laa-Laa fetches leaderboard data and shows it on the webpage using async/await
         async function makeRequest() {
             try {
-                const response = await fetch('http://127.0.0.1:5000/leaderboard');
+                const response = await fetch('http://51.15.125.47:5000/leaderboard');
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }

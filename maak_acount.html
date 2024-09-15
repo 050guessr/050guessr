@@ -23,13 +23,13 @@
             var naam = document.getElementById("name").value
             var ww = document.getElementById("password").value
             var email = document.getElementById("email").value
-            var data = await makeRequest("http://127.0.0.1:5000/maak_acount_V2/" + naam + "/" + ww + "/" + email)
+            var data = await makeRequest("http://51.15.125.47:5000/maak_acount_V2/" + naam + "/" + ww + "/" + email)
 
             if (data == "account aangemaakt") {
-                key = await makeRequest("http://127.0.0.1:5000/login/" + naam + "/" + ww)
+                key = await makeRequest("http://51.15.125.47:5000/login/" + naam + "/" + ww)
                 console.log(data)
                 await localStorage.setItem("key", key)
-                window.location.replace("http://127.0.0.1:5500/index.html");
+                window.location.replace("http://51.15.125.47:5000/index.html");
             }
             document.getElementById("rood").innerText = data
 
