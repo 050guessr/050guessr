@@ -21,7 +21,7 @@
         }
         async function login() {
             var naam = document.getElementById("name").value;
-            const data = await makeRequest("http://51.15.125.47:5000/restore_acount/" + naam);
+            const data = await makeRequest("https://51.15.125.47:5000/restore_acount/" + naam);
             if (data == naam){window.location.replace("050guesser.nl/login.html");}
             document.getElementById("rood").innerText = "geen account gevonden";
 

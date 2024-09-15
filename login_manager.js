@@ -17,7 +17,7 @@ function in_gelogd() {
 async function acount_naam() {
     const options = {method: 'GET'};
 
-    return await makeRequest("http://51.15.125.47:5000/get_item/user_key/"+localStorage.getItem("key")+"/1")
+    return await makeRequest("https://51.15.125.47:5000/get_item/user_key/"+localStorage.getItem("key")+"/1")
 }
 async function makeRequest(url) {
     try {
