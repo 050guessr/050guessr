@@ -23,13 +23,13 @@
             var naam = document.getElementById("name").value
             var ww = document.getElementById("password").value
             var email = document.getElementById("email").value
-            var data = await makeRequest("https://51.15.125.47:5000/maak_acount_V2/" + naam + "/" + ww + "/" + email)
+            var data = await makeRequest("https://api.050guessr.nl/maak_acount_V2/" + naam + "/" + ww + "/" + email)
 
             if (data == "account aangemaakt") {
-                key = await makeRequest("https://51.15.125.47:5000/login/" + naam + "/" + ww)
+                key = await makeRequest("https://api.050guessr.nl/login/" + naam + "/" + ww)
                 console.log(data)
                 await localStorage.setItem("key", key)
-                window.location.replace("https://51.15.125.47:5000/index.html");
+                window.location.replace("https://api.050guessr.nl/index.html");
             }
             document.getElementById("rood").innerText = data
 
