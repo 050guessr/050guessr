@@ -29,7 +29,7 @@
                 key = await makeRequest("https://api.050guessr.nl/login/" + naam + "/" + ww)
                 console.log(data)
                 await localStorage.setItem("key", key)
-                window.location.replace("https://api.050guessr.nl/index.html");
+                window.location.replace("index.html");
             }
             document.getElementById("rood").innerText = data
 

@@ -22,7 +22,7 @@
         async function login() {
             var naam = document.getElementById("name").value;
             const data = await makeRequest("https://api.050guessr.nl/restore_acount/" + naam);
-            if (data == naam){window.location.replace("050guesser.nl/login.html");}
+            if (data == naam){window.location.replace("login.html");}
             document.getElementById("rood").innerText = "geen account gevonden";
 
             
