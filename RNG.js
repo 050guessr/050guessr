@@ -16,7 +16,7 @@ function RNG(daily) {
         var info = JSON.parse(httpGet("info.json"));
         var temp = "";
         const daily_seeds = [];
-        for (let loop = 0; loop < 5; console.log(loop)) {
+        for (let loop = 1; loop < 6; console.log(loop)) {
             temp = Math.floor(Math.random() * info.foto_hoeveelheid);
             if (!daily_seeds.includes(temp)) {
                 daily_seeds[loop] = temp;
