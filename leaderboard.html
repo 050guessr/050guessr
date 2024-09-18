@@ -28,13 +28,13 @@
             if (data) {
                 var leaderboardDiv = document.getElementById('plek_een');
                 var leaderboard = JSON.parse(data)
-                leaderboardDiv.innerHTML = leaderboard[0].username + " " + leaderboard[0].user_score + " punten";
+                leaderboardDiv.innerHTML += leaderboard[0].username + " " + leaderboard[0].user_score + " punten";
                 var leaderboardDiv = document.getElementById('plek_twee');
-                leaderboardDiv.innerHTML = leaderboard[1].username + " " + leaderboard[1].user_score + " punten";
+                leaderboardDiv.innerHTML += leaderboard[1].username + " " + leaderboard[1].user_score + " punten";
                 var leaderboardDiv = document.getElementById('plek_drie');
-                leaderboardDiv.innerHTML = leaderboard[2].username + " " + leaderboard[2].user_score + " punten";
+                leaderboardDiv.innerHTML += leaderboard[2].username + " " + leaderboard[2].user_score + " punten";
                 var leaderboardDiv = document.getElementById('de_rest');
-                leaderboardDiv.innerHTML = leaderboard[3].username + " " + leaderboard[3].user_score + " punten";
+                leaderboardDiv.innerHTML += leaderboard[3].username + " " + leaderboard[3].user_score + " punten";
                 console.log("loop")
                 for (let i = 4; i < leaderboard.length; i++) {
                     var leaderboardDiv = document.getElementById('de_rest');
@@ -58,10 +58,19 @@
 
     <div id="container" class="container">
 
-        <div class="plek_een" id="plek_een"></div>
-        <div class="plek_twee" id="plek_twee"></div>
-        <div class="plek_drie" id="plek_drie"></div>
-        <div class="de_rest" id="de_rest"></div>
+        <div>
+            <p id="plek_een"> <img src="afbeeldingen/Gold Medal.png" class="medalie" alt="">
+            </p>
+        </div>
+        <div>
+            <p id="plek_twee"> <img src="afbeeldingen/Silver Medal.png" class="medalie" alt="">
+            </p>
+        </div>
+        <div>
+            <p id="plek_drie"> <img src="afbeeldingen/Bronze Medal.png" class="medalie" alt="">
+            </p>
+        </div>
+        <div id="de_rest"></div>
     </div>
 
 </body>
