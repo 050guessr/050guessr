@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="leaderboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>klaar</title>
+    <script>
+        // Teletubby code mode activated!
+        // Laa-Laa fetches leaderboard data and shows it on the webpage using async/await
+        async function makeRequest() {
+            try {
+                const response = await fetch('https://api.050guessr.nl/leaderboard');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.text();
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
+        async function get_user_name() {
+            try {
+                const response = await fetch('https://api.050guessr.nl/get_item/user_key/' + localStorage.getItem("key") + '/1');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.text();
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
+        function in_gelogd() {
+            if (localStorage.getItem("key") !== null) {
+                return true
+            }
+            return false
+        }
+
+        async function get_player_data() {
+            const Rusername = await get_user_name();
+            const data = JSON.parse(await makeRequest());
+            if (!data) {
+                return null
+            }
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].username == Rusername) {
+                    var player_data = data[i];
+                    var place_in_leaderboard = i + 1;
+                    return place_in_leaderboard
+                }
+            }
+            return null
+        }
+
+
+        async function displayLeaderboard() {
+            const data = await makeRequest();
+            if (data) {
+                var leaderboardDiv = document.getElementById('plek_een');
+                var leaderboard = JSON.parse(data)
+                leaderboardDiv.innerHTML += leaderboard[0].username + " " + leaderboard[0].user_score + " punten";
+                var leaderboardDiv = document.getElementById('plek_twee');
+                leaderboardDiv.innerHTML += leaderboard[1].username + " " + leaderboard[1].user_score + " punten";
+                var leaderboardDiv = document.getElementById('plek_drie');
+                leaderboardDiv.innerHTML += leaderboard[2].username + " " + leaderboard[2].user_score + " punten";
+                var leaderboardDiv = document.getElementById('de_rest');
+                leaderboardDiv.innerHTML += leaderboard[3].username + " " + leaderboard[3].user_score + " punten";
+                console.log("loop")
+                for (let i = 4; i < leaderboard.length; i++) {
+                    var leaderboardDiv = document.getElementById('de_rest');
+                    leaderboardDiv.innerHTML = leaderboardDiv.innerHTML + "<br>" + leaderboard[i].username + " " + leaderboard[i].user_score + " punten";
+                    console.log("loop")
+                }
+                document.getElementById("gefelliciteerd").innerText = "gefelliciteerd je hebt " + sessionStorage.getItem("score") + " punten";
+                if (in_gelogd()) {
+                    document.getElementById("je_bent_op_plek").innerText = "je bent op plek " + await get_player_data() + " in de leaderboard";
+                } else {
+                    document.getElementById("je_bent_op_plek").innerText = "login of maak een acount om op de leaderboard te komen!";
+                }
+
+
+            } else {
+                document.getElementById('container').innerHTML = ' server offline )=';
+            }
+        }
+
+        // Call the function to display the leaderboard
+        displayLeaderboard();
+    </script>
+</head>
+
+<body>
+    <a href="index.html">terug</a>
+    <div class="logo"><img src="logo.png" alt="">
+    </div>
+    <p class="gefelliciteerd" id="gefelliciteerd">gefelliciteerd je hebt 0 punten</p>
+    <p class="gefelliciteerd" id="je_bent_op_plek">je kont daarmee op plek 0</p>
+
+    <div id="container" class="container">
+
+        <div>
+            <p id="plek_een"> <img src="afbeeldingen/Gold Medal.png" class="medalie" alt="">
+            </p>
+        </div>
+        <div>
+            <p id="plek_twee"> <img src="afbeeldingen/Silver Medal.png" class="medalie" alt="">
+            </p>
+        </div>
+        <div>
+            <p id="plek_drie"> <img src="afbeeldingen/Bronze Medal.png" class="medalie" alt="">
+            </p>
+        </div>
+        <div id="de_rest"></div>
+    </div>
+
+</body>
+
+</html>
