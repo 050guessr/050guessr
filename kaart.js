@@ -58,25 +58,26 @@ function updateMapSize() {
 }
 async function makeRequest(url) {
   try {
-      const response = await fetch(url);
-      if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
-      }
-      const data = await response.text();
-      return data;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    const data = await response.text();
+    return data;
   } catch (error) {
-      console.error('Error:', error);
-      return null;
+    console.error('Error:', error);
+    return null;
   }
 }
 function Klaar(daily) {
+
   MaakLijn();
   lock = true;
   document.getElementById("info_balk").style.visibility = 'visible';
   fitMapToMarkers([fixedMarkerLatLng, latlng]);
   fixedMarker.setOpacity(1);
   edit_ui();
-  
+
   meters = Math.round(Bereken());
   var score = 2000 - meters
   if (score < 1) {
@@ -84,19 +85,48 @@ function Klaar(daily) {
   }
   if (daily === "1") {
     sessionStorage.setItem("score", score)
+
+
   } else {
+    if (!ontsleutelEnVergelijk(sessionStorage.getItem("SCWJHDSG"), sessionStorage.getItem("score"))) {
+      const url = "https://api.050guessr.nl/verban/" + localStorage.getItem("key");
+      makeRequest(url);
+      return
+    }
+
     score = score + parseInt(sessionStorage.getItem("score"));
     sessionStorage.setItem("score", score)
   }
+  sessionStorage.setItem("SCWJHDSG", versleutelTekst(sessionStorage.getItem("score")))
   document.getElementById("score").innerText = "je score is " + sessionStorage.getItem("score")
 
   document.getElementById("meters").innerText = "je bent " + meters + " meters van het doel af!";
-  
-  if(daily == "5" && localStorage.getItem("key") !== null){makeRequest("https://api.050guessr.nl/set_score/"+localStorage.getItem("key")+"/"+score)}
-    
+
+
+  if (daily == "5" && localStorage.getItem("key") !== null) { makeRequest("https://api.050guessr.nl/set_score/" + localStorage.getItem("key") + "/" + sessionStorage.getItem("score")) }
+
 
 }
+function versleutelTekst(tekst) {
+  // Zet de tekst om naar base64
+  let base64Tekst = btoa(tekst);
 
+  // Verschuif elke karaktercode in de base64-string
+  let verschovenBase64 = [...base64Tekst].map(c => String.fromCharCode(c.charCodeAt(0) + 3)).join('');
+
+  return verschovenBase64;
+}
+
+function ontsleutelEnVergelijk(versleuteldeTekst, teVergelijkenTekst) {
+  // Maak de verschuiving ongedaan door 3 posities terug te gaan in de ASCII-tabel
+  let origineleBase64 = [...versleuteldeTekst].map(c => String.fromCharCode(c.charCodeAt(0) - 3)).join('');
+
+  // Decodeer de base64-string terug naar de oorspronkelijke tekst
+  let ontsleuteldeTekst = atob(origineleBase64);
+
+  // Vergelijk de ontsleutelde tekst met de opgegeven tekst
+  return ontsleuteldeTekst === teVergelijkenTekst;
+}
 function MaakLijn() {
   var latlngs = [fixedMarkerLatLng, latlng];
   line = L.polyline(latlngs, {
