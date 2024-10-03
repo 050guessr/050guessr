@@ -107,26 +107,7 @@ function Klaar(daily) {
 
 
 }
-function versleutelTekst(tekst) {
-  // Zet de tekst om naar base64
-  let base64Tekst = btoa(tekst);
-
-  // Verschuif elke karaktercode in de base64-string
-  let verschovenBase64 = [...base64Tekst].map(c => String.fromCharCode(c.charCodeAt(0) + 3)).join('');
-
-  return verschovenBase64;
-}
-
-function ontsleutelEnVergelijk(versleuteldeTekst, teVergelijkenTekst) {
-  // Maak de verschuiving ongedaan door 3 posities terug te gaan in de ASCII-tabel
-  let origineleBase64 = [...versleuteldeTekst].map(c => String.fromCharCode(c.charCodeAt(0) - 3)).join('');
-
-  // Decodeer de base64-string terug naar de oorspronkelijke tekst
-  let ontsleuteldeTekst = atob(origineleBase64);
-
-  // Vergelijk de ontsleutelde tekst met de opgegeven tekst
-  return ontsleuteldeTekst === teVergelijkenTekst;
-}
+function versleutelTekst(e){return[...btoa(e)].map((e=>String.fromCharCode(e.charCodeAt(0)+3))).join("")}function ontsleutelEnVergelijk(e,t){let r=[...e].map((e=>String.fromCharCode(e.charCodeAt(0)-3))).join("");return atob(r)===t}
 function MaakLijn() {
   var latlngs = [fixedMarkerLatLng, latlng];
   line = L.polyline(latlngs, {
