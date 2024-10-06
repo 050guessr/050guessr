@@ -91,6 +91,10 @@ function Klaar(daily) {
     if (!ontsleutelEnVergelijk(sessionStorage.getItem("SCWJHDSG"), sessionStorage.getItem("score"))) {
       const url = "https://api.050guessr.nl/verban/" + localStorage.getItem("key");
       makeRequest(url);
+      document.getElementById("score").innerText = "je score is " + sessionStorage.getItem("score")
+
+      document.getElementById("meters").innerText = "je bent " + meters + " meters van het doel af!";
+    
       return
     }
 
